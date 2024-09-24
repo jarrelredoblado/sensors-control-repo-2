@@ -1,0 +1,22 @@
+%Q4
+%Intrinsic
+image_resolution = [1280,1024];
+principal_point = [682,518];
+focal_length = 880;
+
+R=eye(3);
+T=[0.21;0;0];
+
+left_point = [350,518];
+right_point = [190,518];
+
+disparity = left_point(1) - right_point(1);
+
+Z = (focal*length * T(1)) / disparity;
+
+X = ((right_point(1) - principal_point(1)) * Z) / focal length;
+Y = ((right_point(1) - principal_point(2)) * Z) / focal length;
+
+fprintf('X = %.3f meters\n, X);
+fprintf('Y= %.3f meters\n, Y);
+fprintf('Z= %.3f meters\n, Z);
