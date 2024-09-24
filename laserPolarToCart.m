@@ -19,9 +19,29 @@ end
 
 % -------------- Sample Quiz 2 - Question 8 --------------
 
+disp("-------------- Sample Quiz 2 - Question 8 --------------");
+
 % Laser scan data and field of view
 scanData = [17, 16, 15, 13, 14, 15, 16, 17];
 fov = [-78, 78];  % Field of view in degrees
+
+% Call the function to convert to Cartesian coordinates
+[X, Y] = convertPolarToCartesian(scanData, fov);
+
+% Display the result
+disp('X coordinates:');
+disp(X);
+disp('Y coordinates:');
+disp(Y);
+
+
+% -------------- Quiz 2 - Question 1--------------
+
+disp("-------------- Quiz 2 - Question 1- --------------");
+
+% Laser scan data and field of view
+scanData = [4.242, 3.543, 3.178, 3.018, 3.018, 3.178, 3.543, 4.242];
+fov = [-45, 45];  % Field of view in degrees
 
 % Call the function to convert to Cartesian coordinates
 [X, Y] = convertPolarToCartesian(scanData, fov);
