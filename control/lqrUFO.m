@@ -1,8 +1,5 @@
 close all
-
-% Initial Conditions
-x0 = [3;  % 3 radians
-      0]; % 0 rad/s
+% ---- DEVELOP LINEAR MODEL ----
 
 % System Dynamics
 A = [0    1; 
@@ -12,15 +9,29 @@ B = [0;
 C = [1 0];
 D = 0;
 
+
+% ---- ADJUST Q and R ----
+
 % Control Law
 Q = [1 0;  % Penalize angular error
      0 1]; % Penalize angular rate
 R = 1;     % Penalize thruster effort
+
+
+% ---- FIND OPTIMAL GAIN SET ----
+
 K = lqr(A,B,Q,R);
+
+
+% ---- SINMULATE RESPONSE ----
 
 % Closed loop system
 sys = ss((A - B*K), B, C, D);
 
+% Initial Conditions
+x0 = [3;  % 3 radians
+      0]; % 0 rad/s
+      
 % Run response to initial condition
 t = 0:0.005:30;
 [y,t,x] = initial(sys, x0, t);
